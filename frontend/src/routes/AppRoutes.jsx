@@ -1,12 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProtectedRoute from "../components/common/ProtectedRoute";
+import Home from "../pages/Home";
 
 function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
         {/* Public routes */}
-        <Route path="/" element={<h1>Job Recruitment Portal</h1>} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<h1>Login</h1>} />
         <Route path="/register" element={<h1>Register</h1>} />
 
