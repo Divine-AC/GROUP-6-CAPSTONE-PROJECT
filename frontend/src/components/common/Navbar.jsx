@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 function Navbar() {
   const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const {
     user,
@@ -10,75 +12,44 @@ function Navbar() {
     logout,
   } = useAuth();
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   const handleLogout = () => {
     logout();
+    closeMenu();
     navigate("/");
   };
 
   return (
     <header className="navbar">
       <div className="navbar-container">
-
-        {/* Logo */}
-        <Link to="/" className="brand">
+        <Link
+          to="/"
+          className="brand"
+          onClick={closeMenu}
+        >
           <div className="brand-mark">J</div>
           <span>JRP</span>
         </Link>
 
-        {/* Navigation */}
-        {!isAuthenticated && (
-          <nav className="desktop-nav">
-            <Link to="/jobs">
-              For job seekers
-            </Link>
+        {/* Desktop Navigation */}
+        <nav className="desktop-nav">
+          <Link to="/jobs">Find Jobs</Link>
+          <a href="/#features">Why JRP</a>
+          <a href="/#how-it-works">How It Works</a>
+        </nav>
 
-            {/* <a href="/#features">
-              Why JRP
-            </a> */}
-
-            {/* <a href="/#how-it-works">
-              How It Works
-            </a> */}
-
-            <a href="/employer">
-              For employers
-            </a>
-          </nav>
-        )}
-
-        {isAuthenticated && (
-          <nav className="desktop-nav">
-            <Link to="/jobs">
-              Find Jobs
-            </Link>
-
-            <Link to="/dashboard">
-              Dashboard
-            </Link>
-
-            <Link to="/applications">
-              My Applications
-            </Link>
-          </nav>
-        )}
-
-        {/* Right side */}
+        {/* Desktop Actions */}
         <div className="nav-actions">
-
           {isAuthenticated ? (
             <>
               <Link
-                to="/profile"
-                className="profile-nav-link"
-                aria-label="Open profile"
+                to="/dashboard"
+                className="login-btn"
               >
-                <span className="profile-icon">
-                  {user?.firstName?.charAt(0)?.toUpperCase() || "U"}
-                </span>
-
-                <span className="profile-name">
-                  {user?.firstName || "Profile"}
-                </span>
+                {user?.firstName || "Dashboard"}
               </Link>
 
               <button
@@ -106,20 +77,90 @@ function Navbar() {
               </Link>
             </>
           )}
-
         </div>
 
+        {/* Mobile Menu Button */}
         <button
           type="button"
           className="mobile-menu"
-          aria-label="Open menu"
+          onClick={() =>
+            setIsMenuOpen((previous) => !previous)
+          }
+          aria-label={
+            isMenuOpen
+              ? "Close menu"
+              : "Open menu"
+          }
+          aria-expanded={isMenuOpen}
         >
-          ☰
+          {isMenuOpen ? "✕" : "☰"}
         </button>
-
       </div>
+
+      {/* Mobile Navigation */}
+      {isMenuOpen && (
+        <div className="mobile-nav">
+          {isAuthenticated ? (
+            <>
+              <Link
+                to="/jobs"
+                onClick={closeMenu}
+              >
+                Find Jobs
+              </Link>
+
+              <Link
+                to="/dashboard"
+                onClick={closeMenu}
+              >
+                Dashboard
+              </Link>
+
+              <Link
+                to="/applications"
+                onClick={closeMenu}
+              >
+                My Applications
+              </Link>
+
+              <Link
+                to="/profile"
+                onClick={closeMenu}
+              >
+                Profile
+              </Link>
+
+              <button
+                type="button"
+                className="mobile-logout"
+                onClick={handleLogout}
+              >
+                Log Out
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                onClick={closeMenu}
+              >
+                Log in
+              </Link>
+
+              <Link
+                to="/signup"
+                className="mobile-signup"
+                onClick={closeMenu}
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
+        </div>
+      )}
     </header>
   );
 }
 
 export default Navbar;
+
