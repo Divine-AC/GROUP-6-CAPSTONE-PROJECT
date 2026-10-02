@@ -1,10 +1,9 @@
-import Navbar from "../components/common/Navbar";
-import Footer from "../components/common/Footer";
+// import Footer from "../components/common/Footer";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
     <div className="home-page">
-      <Navbar />
 
       {/* HERO SECTION */}
       <section className="hero-section">
@@ -27,14 +26,14 @@ function Home() {
             </p>
 
             <div className="hero-actions">
-              <button className="primary-btn">
+              <Link to="/jobs" className="primary-btn">
                 Find Your Next Job
                 <span>→</span>
-              </button>
+              </Link>
 
-              <button className="secondary-btn">
+              <Link to="#" className="secondary-btn">
                 I'm an Employer
-              </button>
+              </Link>
             </div>
 
             <div className="hero-trust">
@@ -137,7 +136,7 @@ function Home() {
               </div>
             </div>
 
-            <button className="search-btn">Search Jobs</button>
+             <Link to ="/jobs" className="search-btn">Search Jobs</Link>              
           </div>
         </div>
       </section>
@@ -339,15 +338,11 @@ function Home() {
               next career move.
             </p>
           </div>
-
-          <button className="cta-btn">
-            Explore Jobs
-            <span>→</span>
-          </button>
+           <Link to="/jobs"  className="cta-btn">Explore Jobs</Link>
         </div>
       </section>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
