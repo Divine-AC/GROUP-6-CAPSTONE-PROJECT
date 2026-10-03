@@ -1877,3 +1877,24 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Employer Dashboard Text Fix */
+
+.employer-dashboard h1,
+.employer-dashboard h2,
+.employer-dashboard h3 {
+  color: #142b4a;
+}
+
+.employer-dashboard-header h1 {
+  color: #142b4a;
+}
+
+.employer-card-header h2 {
+  color: #142b4a;
+}
+
+.employer-dashboard-card h2,
+.employer-dashboard-card h3 {
+  color: #142b4a;
+}
