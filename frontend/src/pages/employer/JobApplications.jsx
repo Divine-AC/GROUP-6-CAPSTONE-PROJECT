@@ -1,111 +1,144 @@
-import { useState } from "react";
+import { useParams } from "react-router-dom";
 
-const initialApplications = [
-  {
-    id: 1,
-    name: "Chinedu Okafor",
-    job: "Frontend Developer",
-    date: "2026-09-28",
-    status: "Pending",
-  },
-  {
-    id: 2,
-    name: "Amina Bello",
-    job: "Frontend Developer",
-    date: "2026-09-29",
-    status: "Shortlisted",
-  },
-  {
-    id: 3,
-    name: "Tunde Adeyemi",
-    job: "Backend Developer",
-    date: "2026-09-30",
-    status: "Pending",
-  },
-  {
-    id: 4,
-    name: "Grace Eze",
-    job: "UI/UX Designer",
-    date: "2026-10-01",
-    status: "Rejected",
-  },
-];
+function JobApplications() {
+  const { jobId } = useParams();
 
-export default function JobApplications() {
-  const [applications, setApplications] = useState(initialApplications);
-  const [filter, setFilter] = useState("All");
-
-  const updateStatus = (id, status) => {
-    // Dummy for now: the backend update call will go here later
-    setApplications(
-      applications.map((a) => (a.id === id ? { ...a, status } : a)),
-    );
-  };
-
-  const visible =
-    filter === "All"
-      ? applications
-      : applications.filter((a) => a.status === filter);
-
-  const cell = {
-    padding: "8px",
-    borderBottom: "1px solid #ccc",
-    textAlign: "left",
-  };
+  const applications = [
+    {
+      id: 1,
+      name: "John Doe",
+      email: "johndoe@email.com",
+      location: "Lagos, Nigeria",
+      date: "Oct 2, 2026",
+      status: "Pending",
+    },
+    {
+      id: 2,
+      name: "Sarah Johnson",
+      email: "sarah@email.com",
+      location: "Abuja, Nigeria",
+      date: "Oct 1, 2026",
+      status: "Reviewed",
+    },
+    {
+      id: 3,
+      name: "Michael Smith",
+      email: "michael@email.com",
+      location: "Ibadan, Nigeria",
+      date: "Sep 30, 2026",
+      status: "Shortlisted",
+    },
+  ];
 
   return (
-    <div style={{ maxWidth: "900px", margin: "0 auto", padding: "16px" }}>
-      <h1>Job Applications</h1>
+    <div className="employer-page">
+      <div className="employer-page-container">
+        <div className="employer-page-header">
+          <div>
+            <h1>Job Applications</h1>
+            <p>Review applications received for this job.</p>
+          </div>
 
-      <label>
-        Filter:{" "}
-        <select value={filter} onChange={(e) => setFilter(e.target.value)}>
-          <option>All</option>
-          <option>Pending</option>
-          <option>Shortlisted</option>
-          <option>Rejected</option>
-        </select>
-      </label>
+          <a href="/employer/my-jobs" className="employer-secondary-button">
+            ← Back to My Jobs
+          </a>
+        </div>
 
-      {visible.length === 0 ? (
-        <p>No applications found.</p>
-      ) : (
-        <table
-          style={{
-            width: "100%",
-            borderCollapse: "collapse",
-            marginTop: "12px",
-          }}
-        >
-          <thead>
-            <tr>
-              <th style={cell}>Candidate</th>
-              <th style={cell}>Job</th>
-              <th style={cell}>Applied</th>
-              <th style={cell}>Status</th>
-              <th style={cell}>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {visible.map((app) => (
-              <tr key={app.id}>
-                <td style={cell}>{app.name}</td>
-                <td style={cell}>{app.job}</td>
-                <td style={cell}>{app.date}</td>
-                <td style={cell}>{app.status}</td>
-                <td style={cell}>
-                  <button onClick={() => updateStatus(app.id, "Shortlisted")}>
-                    Shortlist
-                  </button>{" "}
-                  <button onClick={() => updateStatus(app.id, "Rejected")}>
-                    Reject
+        <div className="employer-application-summary">
+          <div>
+            <p>Total Applications</p>
+            <h2>{applications.length}</h2>
+          </div>
+
+          <div>
+            <p>Pending Review</p>
+            <h2>
+              {
+                applications.filter(
+                  (application) => application.status === "Pending",
+                ).length
+              }
+            </h2>
+          </div>
+
+          <div>
+            <p>Shortlisted</p>
+            <h2>
+              {
+                applications.filter(
+                  (application) => application.status === "Shortlisted",
+                ).length
+              }
+            </h2>
+          </div>
+        </div>
+
+        <div className="employer-dashboard-card">
+          <div className="employer-card-header">
+            <div>
+              <h2>Applications</h2>
+              <p>Applicants for Job ID: {jobId}</p>
+            </div>
+          </div>
+
+          <div className="employer-applications-table">
+            {applications.map((application) => (
+              <div className="employer-application-row" key={application.id}>
+                <div className="employer-applicant-info">
+                  <div className="employer-applicant-avatar">
+                    {application.name.charAt(0)}
+                  </div>
+
+                  <div>
+                    <h3>{application.name}</h3>
+                    <p>{application.email}</p>
+                  </div>
+                </div>
+
+                <div className="employer-application-location">
+                  <span>Location</span>
+                  <p>{application.location}</p>
+                </div>
+
+                <div className="employer-application-date">
+                  <span>Applied</span>
+                  <p>{application.date}</p>
+                </div>
+
+                <div>
+                  <span
+                    className={`employer-application-status employer-status-${application.status.toLowerCase()}`}
+                  >
+                    {application.status}
+                  </span>
+                </div>
+
+                <div className="employer-application-actions">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      alert(`Viewing ${application.name}'s application`)
+                    }
+                  >
+                    View
                   </button>
-                </td>
-              </tr>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      alert(`${application.name} has been shortlisted`)
+                    }
+                  >
+                    Shortlist
+                  </button>
+                </div>
+              </div>
             ))}
-          </tbody>
-        </table>
-      )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
+
+export default JobApplications;

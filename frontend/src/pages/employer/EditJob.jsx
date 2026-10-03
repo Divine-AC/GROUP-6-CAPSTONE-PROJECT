@@ -1,95 +1,161 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
-// Dummy job for now: later this will be loaded from the backend using the job id
-const existingJob = {
-  id: 1,
-  title: "Frontend Developer",
-  location: "Lagos",
-  salary: "$50,000",
-  type: "Full-time",
-  description: "Build and maintain the company's web interfaces.",
-};
+function EditJob() {
+  const { jobId } = useParams();
 
-export default function EditJob() {
-  const [job, setJob] = useState(existingJob);
-  const [message, setMessage] = useState("");
+  const [formData, setFormData] = useState({
+    title: "Frontend Developer",
+    company: "Tech Company",
+    location: "Lagos, Nigeria",
+    type: "Full-time",
+    salary: "₦200,000 - ₦300,000",
+    description:
+      "We are looking for a skilled Frontend Developer to join our team and build modern web applications.",
+    requirements: "Experience with React, JavaScript, HTML, CSS and Git.",
+  });
 
   const handleChange = (e) => {
-    setJob({ ...job, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    setFormData((previous) => ({
+      ...previous,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Dummy for now: the backend update call will go here later
-    console.log("Job updated:", job);
-    setMessage("Job updated successfully!");
-  };
 
-  const fieldStyle = {
-    display: "block",
-    width: "100%",
-    padding: "8px",
-    marginBottom: "12px",
+    console.log("Updated job:", {
+      id: jobId,
+      ...formData,
+    });
+
+    alert("Job updated successfully!");
   };
 
   return (
-    <div style={{ maxWidth: "500px", margin: "0 auto", padding: "16px" }}>
-      <h1>Edit Job</h1>
+    <div className="employer-page">
+      <div className="employer-page-container">
+        <div className="employer-page-header">
+          <div>
+            <h1>Edit Job</h1>
+            <p>Update the information for this job posting.</p>
+          </div>
+        </div>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          name="title"
-          placeholder="Job title"
-          value={job.title}
-          onChange={handleChange}
-          style={fieldStyle}
-          required
-        />
-        <input
-          name="location"
-          placeholder="Location"
-          value={job.location}
-          onChange={handleChange}
-          style={fieldStyle}
-          required
-        />
-        <input
-          name="salary"
-          placeholder="Salary"
-          value={job.salary}
-          onChange={handleChange}
-          style={fieldStyle}
-        />
+        <div className="employer-form-card">
+          <form onSubmit={handleSubmit}>
+            <div className="employer-form-grid">
+              <div className="employer-form-group">
+                <label htmlFor="title">Job Title</label>
 
-        <select
-          name="type"
-          value={job.type}
-          onChange={handleChange}
-          style={fieldStyle}
-        >
-          <option>Full-time</option>
-          <option>Part-time</option>
-          <option>Contract</option>
-          <option>Internship</option>
-          <option>Remote</option>
-        </select>
+                <input
+                  id="title"
+                  name="title"
+                  type="text"
+                  value={formData.title}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
 
-        <textarea
-          name="description"
-          placeholder="Job description"
-          rows={5}
-          value={job.description}
-          onChange={handleChange}
-          style={fieldStyle}
-          required
-        />
+              <div className="employer-form-group">
+                <label htmlFor="company">Company Name</label>
 
-        <button type="submit" style={{ padding: "10px 20px" }}>
-          Save Changes
-        </button>
-      </form>
+                <input
+                  id="company"
+                  name="company"
+                  type="text"
+                  value={formData.company}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
 
-      {message && <p>{message}</p>}
+              <div className="employer-form-group">
+                <label htmlFor="location">Location</label>
+
+                <input
+                  id="location"
+                  name="location"
+                  type="text"
+                  value={formData.location}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="employer-form-group">
+                <label htmlFor="type">Employment Type</label>
+
+                <select
+                  id="type"
+                  name="type"
+                  value={formData.type}
+                  onChange={handleChange}
+                >
+                  <option value="Full-time">Full-time</option>
+                  <option value="Part-time">Part-time</option>
+                  <option value="Contract">Contract</option>
+                  <option value="Internship">Internship</option>
+                </select>
+              </div>
+
+              <div className="employer-form-group">
+                <label htmlFor="salary">Salary</label>
+
+                <input
+                  id="salary"
+                  name="salary"
+                  type="text"
+                  value={formData.salary}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+
+            <div className="employer-form-group">
+              <label htmlFor="description">Job Description</label>
+
+              <textarea
+                id="description"
+                name="description"
+                rows="6"
+                value={formData.description}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="employer-form-group">
+              <label htmlFor="requirements">Requirements</label>
+
+              <textarea
+                id="requirements"
+                name="requirements"
+                rows="6"
+                value={formData.requirements}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="employer-form-actions">
+              <a href="/employer/my-jobs" className="employer-secondary-button">
+                Cancel
+              </a>
+
+              <button type="submit" className="employer-primary-button">
+                Save Changes
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }
+
+export default EditJob;
