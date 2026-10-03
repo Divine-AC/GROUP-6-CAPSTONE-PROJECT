@@ -870,3 +870,1010 @@
     flex-direction: column;
   }
 }
+
+/* ========================================
+   ADMIN DASHBOARD
+======================================== */
+
+.admin-dashboard {
+  min-height: 100vh;
+  background: #f7f9fc;
+  color: #142b4a;
+}
+
+.admin-dashboard-container {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.admin-dashboard-header {
+  margin-bottom: 28px;
+}
+
+.admin-dashboard-header h1 {
+  margin: 0 0 8px;
+  color: #142b4a;
+  font-size: 30px;
+}
+
+.admin-dashboard-header p {
+  margin: 0;
+  color: #64748b;
+}
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.admin-stat-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.admin-stat-card p {
+  margin: 0 0 10px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.admin-stat-card h2 {
+  margin: 0;
+  color: #142b4a;
+  font-size: 28px;
+}
+
+.admin-dashboard-card {
+  margin-bottom: 24px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.admin-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 24px;
+}
+
+.admin-card-header h2 {
+  margin: 0 0 5px;
+  color: #142b4a;
+  font-size: 19px;
+}
+
+.admin-card-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.admin-card-header a {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.admin-user-list,
+.admin-job-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-user-item,
+.admin-job-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 24px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.admin-user-item h3,
+.admin-job-item h3 {
+  margin: 0 0 5px;
+  color: #142b4a;
+  font-size: 15px;
+}
+
+.admin-user-item p,
+.admin-job-item p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.admin-role {
+  display: inline-flex;
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admin-date {
+  text-align: right;
+}
+
+.admin-job-item > span {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.admin-status-active,
+.admin-status-closed {
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px !important;
+  font-weight: 600;
+}
+
+.admin-status-active {
+  background: #f0fdf4;
+  color: #15803d !important;
+}
+
+.admin-status-closed {
+  background: #f1f5f9;
+  color: #64748b !important;
+}
+
+.admin-quick-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  padding: 0 24px 24px;
+}
+
+.admin-quick-actions a {
+  padding: 14px;
+  border: 1px solid #dbeafe;
+  border-radius: 8px;
+  background: #fff;
+  color: #2563eb;
+  text-decoration: none;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.admin-quick-actions a:hover {
+  background: #eff6ff;
+}
+
+@media (max-width: 900px) {
+  .admin-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admin-quick-actions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .admin-dashboard-container {
+    width: min(100% - 32px, 1180px);
+    padding: 28px 0;
+  }
+
+  .admin-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-user-item,
+  .admin-job-item {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .admin-date {
+    text-align: left;
+  }
+
+  .admin-quick-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
+   ADMIN USERS
+======================================== */
+
+.admin-users {
+  min-height: 100vh;
+  background: #f7f9fc;
+  color: #142b4a;
+}
+
+.admin-users-container {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.admin-users-header {
+  margin-bottom: 28px;
+}
+
+.admin-users-header h1 {
+  margin: 0 0 8px;
+  color: #142b4a;
+  font-size: 30px;
+}
+
+.admin-users-header p {
+  margin: 0;
+  color: #64748b;
+}
+
+.admin-users-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.admin-users-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 24px;
+}
+
+.admin-users-top h2 {
+  margin: 0 0 5px;
+  font-size: 19px;
+  color: #142b4a;
+}
+
+.admin-users-top p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.admin-user-search {
+  width: 260px;
+  padding: 11px 14px;
+  border: 1px solid #dbe3ec;
+  border-radius: 8px;
+  outline: none;
+  font-size: 13px;
+}
+
+.admin-user-search:focus {
+  border-color: #2563eb;
+}
+
+.admin-users-list {
+  width: 100%;
+}
+
+.admin-users-table-header,
+.admin-user-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.2fr 0.8fr;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 24px;
+}
+
+.admin-users-table-header {
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admin-user-row {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.admin-user-row:last-child {
+  border-bottom: none;
+}
+
+.admin-user-info h3 {
+  margin: 0 0 5px;
+  color: #142b4a;
+  font-size: 14px;
+}
+
+.admin-user-info p {
+  margin: 0;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.admin-user-role {
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admin-user-status-active,
+.admin-user-status-suspended {
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admin-user-status-active {
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+.admin-user-status-suspended {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.admin-user-date {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.admin-user-action {
+  width: fit-content;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 7px;
+  background: #2563eb;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admin-user-action:hover {
+  background: #1d4ed8;
+}
+
+@media (max-width: 850px) {
+  .admin-users-table-header {
+    display: none;
+  }
+
+  .admin-user-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .admin-user-search {
+    width: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-users-container {
+    width: min(100% - 32px, 1180px);
+    padding: 28px 0;
+  }
+
+  .admin-users-top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-user-search {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .admin-user-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
+   ADMIN JOBS
+======================================== */
+
+.admin-jobs {
+  min-height: 100vh;
+  background: #f7f9fc;
+  color: #142b4a;
+}
+
+.admin-jobs-container {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.admin-jobs-header {
+  margin-bottom: 28px;
+}
+
+.admin-jobs-header h1 {
+  margin: 0 0 8px;
+  color: #142b4a;
+  font-size: 30px;
+}
+
+.admin-jobs-header p {
+  margin: 0;
+  color: #64748b;
+}
+
+.admin-jobs-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.admin-jobs-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 24px;
+}
+
+.admin-jobs-top h2 {
+  margin: 0 0 5px;
+  font-size: 19px;
+  color: #142b4a;
+}
+
+.admin-jobs-top p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.admin-job-search {
+  width: 260px;
+  padding: 11px 14px;
+  border: 1px solid #dbe3ec;
+  border-radius: 8px;
+  outline: none;
+  font-size: 13px;
+}
+
+.admin-job-search:focus {
+  border-color: #2563eb;
+}
+
+.admin-jobs-list {
+  width: 100%;
+}
+
+.admin-jobs-table-header,
+.admin-job-row {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 1fr 0.9fr 0.9fr 0.8fr;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 24px;
+}
+
+.admin-jobs-table-header {
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admin-job-row {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.admin-job-row:last-child {
+  border-bottom: none;
+}
+
+.admin-job-info h3 {
+  margin: 0 0 5px;
+  color: #142b4a;
+  font-size: 14px;
+}
+
+.admin-job-info p {
+  margin: 0 0 4px;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.admin-job-info small {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.admin-job-location,
+.admin-job-type,
+.admin-job-applications {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.admin-job-status-active,
+.admin-job-status-closed {
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admin-job-status-active {
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+.admin-job-status-closed {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.admin-job-action {
+  width: fit-content;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 7px;
+  background: #2563eb;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admin-job-action:hover {
+  background: #1d4ed8;
+}
+
+@media (max-width: 950px) {
+  .admin-jobs-table-header {
+    display: none;
+  }
+
+  .admin-job-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-jobs-container {
+    width: min(100% - 32px, 1180px);
+    padding: 28px 0;
+  }
+
+  .admin-jobs-top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-job-search {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .admin-job-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
+   ADMIN APPLICATIONS
+======================================== */
+
+.admin-applications {
+  min-height: 100vh;
+  background: #f7f9fc;
+  color: #142b4a;
+}
+
+.admin-applications-container {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.admin-applications-header {
+  margin-bottom: 28px;
+}
+
+.admin-applications-header h1 {
+  margin: 0 0 8px;
+  color: #142b4a;
+  font-size: 30px;
+}
+
+.admin-applications-header p {
+  margin: 0;
+  color: #64748b;
+}
+
+.admin-applications-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.admin-applications-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 24px;
+}
+
+.admin-applications-top h2 {
+  margin: 0 0 5px;
+  font-size: 19px;
+  color: #142b4a;
+}
+
+.admin-applications-top p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.admin-application-search {
+  width: 260px;
+  padding: 11px 14px;
+  border: 1px solid #dbe3ec;
+  border-radius: 8px;
+  outline: none;
+  font-size: 13px;
+}
+
+.admin-application-search:focus {
+  border-color: #2563eb;
+}
+
+.admin-applications-table-header,
+.admin-application-row {
+  display: grid;
+  grid-template-columns: 1.7fr 1.5fr 1.2fr 1fr 1fr 0.7fr;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 24px;
+}
+
+.admin-applications-table-header {
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admin-application-row {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.admin-application-row:last-child {
+  border-bottom: none;
+}
+
+.admin-application-candidate h3 {
+  margin: 0 0 5px;
+  color: #142b4a;
+  font-size: 14px;
+}
+
+.admin-application-candidate p {
+  margin: 0;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.admin-application-job,
+.admin-application-company,
+.admin-application-date {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.admin-application-status-pending,
+.admin-application-status-reviewed,
+.admin-application-status-shortlisted,
+.admin-application-status-rejected {
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admin-application-status-pending {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.admin-application-status-reviewed {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.admin-application-status-shortlisted {
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+.admin-application-status-rejected {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.admin-application-action {
+  width: fit-content;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 7px;
+  background: #2563eb;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admin-application-action:hover {
+  background: #1d4ed8;
+}
+
+@media (max-width: 950px) {
+  .admin-applications-table-header {
+    display: none;
+  }
+
+  .admin-application-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-applications-container {
+    width: min(100% - 32px, 1180px);
+    padding: 28px 0;
+  }
+
+  .admin-applications-top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-application-search {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .admin-application-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
+   ADMIN REPORTS
+======================================== */
+
+.admin-report {
+  min-height: 100vh;
+  background: #f7f9fc;
+  color: #142b4a;
+}
+
+.admin-report-container {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.admin-report-header {
+  margin-bottom: 28px;
+}
+
+.admin-report-header h1 {
+  margin: 0 0 8px;
+  color: #142b4a;
+  font-size: 30px;
+}
+
+.admin-report-header p {
+  margin: 0;
+  color: #64748b;
+}
+
+.admin-report-overview {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.admin-report-stat {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.admin-report-stat p {
+  margin: 0 0 10px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.admin-report-stat h2 {
+  margin: 0;
+  color: #142b4a;
+  font-size: 28px;
+}
+
+.admin-report-card {
+  margin-bottom: 24px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.admin-report-card-header {
+  padding: 22px 24px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.admin-report-card-header h2 {
+  margin: 0 0 5px;
+  color: #142b4a;
+  font-size: 19px;
+}
+
+.admin-report-card-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.admin-application-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 24px;
+}
+
+.admin-application-stat {
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.admin-application-stat-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.admin-application-stat-top span {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.admin-application-stat-top strong {
+  color: #142b4a;
+  font-size: 18px;
+}
+
+.admin-progress {
+  width: 100%;
+  height: 8px;
+  margin-bottom: 8px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.admin-progress-bar {
+  height: 100%;
+  background: #2563eb;
+  border-radius: 10px;
+}
+
+.admin-application-stat small {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.admin-job-stat-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-job-stat-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.admin-job-stat-item:last-child {
+  border-bottom: none;
+}
+
+.admin-job-stat-item span {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.admin-job-stat-item strong {
+  color: #142b4a;
+  font-size: 18px;
+}
+
+.admin-report-summary {
+  padding: 24px;
+}
+
+.admin-report-summary p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.admin-report-summary strong {
+  color: #142b4a;
+}
+
+@media (max-width: 900px) {
+  .admin-report-overview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admin-application-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-report-container {
+    width: min(100% - 32px, 1180px);
+    padding: 28px 0;
+  }
+
+  .admin-report-overview {
+    grid-template-columns: 1fr;
+  }
+}

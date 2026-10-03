@@ -7,6 +7,12 @@ import EditJob from "../pages/employer/Editjob";
 import JobApplications from "../pages/employer/JobApplications";
 import EmployerProfile from "../pages/employer/Profile";
 
+import AdminDashboard from "../pages/admin/Dashboard";
+import AdminUsers from "../pages/admin/Users";
+import AdminJobs from "../pages/admin/Jobs";
+import AdminApplications from "../pages/admin/Applications";
+import AdminReport from "../pages/admin/Reports";
+
 function AppRoutes() {
   return (
     <Routes>
@@ -24,6 +30,12 @@ function AppRoutes() {
       />
 
       <Route path="/employer/profile" element={<EmployerProfile />} />
+
+      <Route path="/admin/dashboard" element={<AdminDashboard />} />
+      <Route path="/admin/users" element={<AdminUsers />} />
+      <Route path="/admin/jobs" element={<AdminJobs />} />
+      <Route path="/admin/applications" element={<AdminApplications />} />
+      <Route path="/admin/reports" element={<AdminReport />} />
     </Routes>
   );
 }
